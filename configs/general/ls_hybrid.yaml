@@ -1,0 +1,16 @@
+# LS (distributional line source), HYBRID (projected) -- manuscript
+# selection. Same test family as ls_pure.yaml (eigen_green_quadrature).
+part: general
+description: "LS hybrid finite element--neural (projected), eigen_green_quadrature (manuscript selection)"
+
+benchmark: LS
+model_class: projected_hybrid
+family: eigen_green_quadrature
+
+architecture: "2D MLP, tanh + FE compensator (P3, 14x12 interface-fitted mesh, 1435 DOFs)"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton, exact projected Jacobian)
+precision: float64
+quadrature: "eigen-Green section test family"
+fe_mesh: "14x12 interface-fitted mesh"
+fe_degree: 3
+evaluation: "independent error quadrature, interface-fitted to the line source"

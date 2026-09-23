@@ -1,0 +1,18 @@
+# JF (discontinuous/jump forcing), HYBRID (projected) -- manuscript selection.
+# Note the test family DIFFERS from jf_pure.yaml (h01_tensor_quadrature, not
+# eigen_green_quadrature) -- this is the manuscript's actual selected mapping,
+# not a typo (see configs/method_mapping.yaml).
+part: general
+description: "JF hybrid finite element--neural (projected), h01_tensor_quadrature (manuscript selection)"
+
+benchmark: JF
+model_class: projected_hybrid
+family: h01_tensor_quadrature
+
+architecture: "2D MLP, tanh + FE compensator (P4, 12x8 interface-fitted mesh, 1457 DOFs)"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton, exact projected Jacobian)
+precision: float64
+quadrature: "tensor-product H01 test family"
+fe_mesh: "12x8 interface-fitted mesh"
+fe_degree: 4
+evaluation: "independent error quadrature on a 20x16 reference triangulation"

@@ -1,0 +1,76 @@
+# Manuscript's selected pure / hybrid finite-element--neural method mapping
+# for the four general weak/hybrid benchmarks (Part B of the paper).
+#
+# Source of truth: petrov_galerkin_results/controlled_timings/method_mapping.json
+# in the historical research tree, produced by a dedicated computational-cost
+# / method-mapping audit and cross-checked against the manuscript's reported
+# median relative L2/H1 values for each benchmark. This file is a direct,
+# lossless YAML transcription -- no values were altered or re-derived.
+#
+# `family` uses the EXACT internal test-family identifier used throughout the
+# research code (CONFIG["section_N"]["pure_petrov"|"projected_hybrid"][family]
+# in the Part B driver script, and the `s{N}_{pure,proj}_{family}` result
+# directory naming convention). `run` is the exact result-directory name for
+# that (benchmark, model) pair under petrov_galerkin_results/section_N/.
+#
+# median_l2 / median_h1 are the historical 5-seed median final relative L2/H1
+# errors recorded at the time of the mapping audit, included here only as a
+# traceability cross-check -- NOT to be treated as a substitute for the
+# manuscript table (see docs/RESULTS.md for the authoritative traceability
+# chain to the actual manuscript numbers).
+
+MS:
+  pure:
+    family: h01_green_quadrature
+    run: s1_pure_h01_green_quadrature
+    n_seeds: 5
+    median_l2: 2.1336611336172336e-15
+    median_h1: 1.0600453258468824e-13
+  hybrid:
+    family: h01_green_quadrature
+    run: s1_proj_h01_green_quadrature
+    n_seeds: 5
+    median_l2: 1.4862660723677023e-13
+    median_h1: 1.0763084283828946e-12
+
+JF:
+  pure:
+    family: eigen_green_quadrature
+    run: s2_pure_eigen_green_quadrature
+    n_seeds: 5
+    median_l2: 0.14473643030955893
+    median_h1: 2.044836204978079
+  hybrid:
+    family: h01_tensor_quadrature
+    run: s2_proj_h01_tensor_quadrature
+    n_seeds: 5
+    median_l2: 4.262041120157478e-05
+    median_h1: 0.00042610917443039307
+
+LS:
+  pure:
+    family: eigen_green_quadrature
+    run: s3_pure_eigen_green_quadrature
+    n_seeds: 5
+    median_l2: 0.00011557760347438318
+    median_h1: 0.00561252220120702
+  hybrid:
+    family: eigen_green_quadrature
+    run: s3_proj_eigen_green_quadrature
+    n_seeds: 5
+    median_l2: 0.0006722252964998411
+    median_h1: 0.006661845357793701
+
+RC:
+  pure:
+    family: random_hats
+    run: s4_pure_random_hats
+    n_seeds: 5
+    median_l2: 1.0519567683408604
+    median_h1: 1.3973980358536207
+  hybrid:
+    family: random_hats
+    run: s4_proj_random_hats
+    n_seeds: 5
+    median_l2: 0.0005035345349868875
+    median_h1: 0.012028615627890126

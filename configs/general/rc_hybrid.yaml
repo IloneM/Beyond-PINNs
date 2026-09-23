@@ -1,0 +1,19 @@
+# RC (reentrant corner), HYBRID (projected) -- manuscript selection.
+# Same test family as rc_pure.yaml (random_hats). This is the run whose
+# random-hat convergence aggregation uses LAST-OBSERVATION-CARRIED-FORWARD
+# for stopped seeds -- see docs/RESULTS.md and
+# generate_pure_vs_projected_random_hats_panels.py.
+part: general
+description: "RC hybrid finite element--neural (projected), random_hats (manuscript selection)"
+
+benchmark: RC
+model_class: projected_hybrid
+family: random_hats
+
+architecture: "2D MLP, tanh, L-shaped domain + FE compensator (power-graded mesh, P2, n_radial=16, n_angular=40, beta=2.5, 2409 DOFs)"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton, exact projected Jacobian)
+precision: float64
+quadrature: "compact random local finite-element hat test functions"
+fe_mesh: "power-graded mesh, n_radial=16, n_angular=40, beta=2.5"
+fe_degree: 2
+evaluation: "independent error quadrature on the corner-graded reference mesh"

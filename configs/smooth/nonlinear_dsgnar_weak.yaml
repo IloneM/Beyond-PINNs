@@ -1,0 +1,12 @@
+# Smooth nonlinear 1D benchmark, weak-residual DSGNAR -- our own method,
+# GNDRM-free.
+part: smooth
+description: "Nonlinear 1D, DSGNAR on the weak residual formulation"
+
+problem: nonlinear
+method: dsgnar_weak
+
+architecture: "1D shallow MLP (tanh AND relu3, both run), width 64 (CONFIG.matched.width)"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton on the weak residual)
+precision: float64
+quadrature: "piecewise Gauss-Legendre, train_h=1/3000, test_h=1/4000"

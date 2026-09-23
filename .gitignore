@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+.python-version
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs, scratch, checkpoints not intended for release
+*.log
+logs/
+scratch/
+*.tmp
+results/smoke_output/
+results/local/
+figures/local/
+# Default output directories the make_figure_*.py scripts write freshly
+# regenerated figures/tables into -- distinct from figures/reference/, the
+# small hand-curated committed copy.
+figures/petrov/
+figures/energy_weak/
+slurm-*.out
+*.pid
+
+# Output roots for freshly-run new experiments (reproduce_general.sh /
+# reproduce_smooth.sh default output_root, matching configs/{general,smooth}/*.yaml
+# -- distinct from results/reference/, which is the published-results
+# archive's documented extraction point, see docs/REPRODUCIBILITY.md)
+/petrov_galerkin_results/
+/energy_vs_weak_benchmarks/
+/petrov_standalone_fem_cache/
+/controlled_timings_fe/
+
+# Large/generated intermediate arrays not tracked in git. results/reference/
+# is the documented interface directory for the separate reference-results
+# archive (see docs/REPRODUCIBILITY.md) -- it is intentionally ABSENT/EMPTY
+# (apart from its own README) in a fresh clone. Only tests/fixtures/ (tiny
+# synthetic golden fixtures, not manuscript data) is tracked.
+*.npz
+*.npy
+results/reference/*
+!results/reference/README.md
+!tests/fixtures/**/*.npz
+
+# LaTeX auxiliaries (paper/ subtree)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+
+# OS metadata
+Thumbs.db
+
+# Local env files
+.env
+.env.*
+
+# uv
+.uv-cache/

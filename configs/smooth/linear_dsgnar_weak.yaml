@@ -1,0 +1,13 @@
+# Smooth linear 1D benchmark, weak-residual DSGNAR -- our own method,
+# GNDRM-free (see docs/PROVENANCE.md; uses beyond_pinns.{initialization,
+# models,quadrature}, not GaussNewtonDRM).
+part: smooth
+description: "Linear 1D, DSGNAR on the weak residual formulation"
+
+problem: linear
+method: dsgnar_weak
+
+architecture: "1D shallow MLP (tanh AND relu3, both run), width 64 (CONFIG.matched.width)"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton on the weak residual)
+precision: float64
+quadrature: "piecewise Gauss-Legendre, train_h=1/3000, test_h=1/4000"

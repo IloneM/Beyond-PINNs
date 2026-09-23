@@ -1,0 +1,18 @@
+# REDUCED-COST CHECK -- NOT the manuscript numbers.
+#
+# Same method as ms_hybrid.yaml (MS hybrid, h01_green_quadrature) but with a
+# single seed and a small iteration cap, for scripts/reproduce_smoke.sh.
+# Verifies the pipeline runs end-to-end; does NOT verify manuscript accuracy.
+part: general
+description: "REDUCED-COST: MS hybrid smoke test (1 seed, 15 iterations) -- NOT manuscript numbers"
+
+benchmark: MS
+model_class: projected_hybrid
+family: h01_green_quadrature
+seeds: [0]
+n_iterations: 15
+output_root: results/smoke_output
+
+architecture: "1D MLP, tanh, [1+3 Fourier features, 32, 32, 1] + FE compensator (P4, 96 elements, 383 DOFs)"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton, exact projected Jacobian)
+precision: float64

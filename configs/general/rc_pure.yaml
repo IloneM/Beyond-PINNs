@@ -1,0 +1,13 @@
+# RC (reentrant corner), PURE Petrov-Galerkin -- manuscript selection.
+part: general
+description: "RC pure Petrov-Galerkin, random_hats (manuscript selection)"
+
+benchmark: RC
+model_class: pure_petrov
+family: random_hats
+
+architecture: "2D MLP, tanh, L-shaped domain"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton)
+precision: float64
+quadrature: "compact random local finite-element hat test functions"
+evaluation: "independent error quadrature on the corner-graded reference mesh"

@@ -1,0 +1,20 @@
+# OPTIONAL reference baseline -- REQUIRES a manually-installed external
+# GaussNewtonDRM checkout (NOT vendored/installed automatically). See
+# docs/PROVENANCE.md.
+#
+#   git clone https://github.com/Jinxl-pp/GaussNewtonDRM GNDRM
+#   cd GNDRM && git checkout 9dd1ee8df8aca41c5f85157c2d7bf2afa12035ce
+#
+# Running this config without that checkout raises a clear error naming the
+# exact commit and install steps (see require_gndrm_baseline() in
+# src/beyond_pinns/legacy/part_a_smooth.py) rather than silently failing.
+part: smooth
+description: "OPTIONAL: Linear 1D, Hao et al. energy Gauss-Newton Deep Ritz reference baseline (requires external GNDRM)"
+
+problem: linear
+method: hao_gn_deep_ritz
+
+architecture: "1D shallow MLP (tanh AND relu3, both run), width 64 (CONFIG.matched.width)"
+optimizer: "Hao-Hong-Jin energy-metric Gauss-Newton (external GNDRM, jacobian_matrix/gn_direction/grid_line_search)"
+precision: float64
+quadrature: "piecewise Gauss-Legendre (GNDRM's own construction), train_h=1/3000, test_h=1/4000"

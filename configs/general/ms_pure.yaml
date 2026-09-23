@@ -1,0 +1,21 @@
+# MS (multiscale diffusion), PURE Petrov-Galerkin -- the manuscript's
+# selected pure method for MS (see configs/method_mapping.yaml).
+# Full manuscript reproduction: 5 seeds, 300 iterations (the historical
+# defaults -- not overridden below).
+part: general
+description: "MS pure Petrov-Galerkin, h01_green_quadrature test family (manuscript selection)"
+
+benchmark: MS
+model_class: pure_petrov
+family: h01_green_quadrature
+
+# --- Documentation-only fields (see beyond_pinns/config.py module docstring):
+# these are NOT independently configurable in the historical implementation
+# -- they are fixed per-benchmark constants defined elsewhere in
+# src/beyond_pinns/legacy/part_b_general.py, recorded here for traceability
+# only. Editing them has NO effect on the actual run.
+architecture: "1D MLP, tanh, [1+3 Fourier features, 32, 32, 1], hard Dirichlet BC"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton)
+precision: float64
+quadrature: "H01-Green split quadrature (operator-adapted test family)"
+evaluation: "independent error quadrature, rtol=1e-8 atol=1e-10 (CONFIG.global)"

@@ -1,0 +1,31 @@
+name: CI
+
+# CPU-only, no GPU, no GNDRM/SIREN-Init/ngrad external checkouts. This
+# intentionally never runs a full PDE campaign -- only installation, import,
+# and the unit/smoke test suite (which skips its own GNDRM-comparison tests
+# automatically when no GNDRM checkout is present, which is always true here).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package with test extras
+        run: pip install -e ".[test]"
+
+      - name: Import check (must work without GNDRM installed)
+        run: python -c "import beyond_pinns; from beyond_pinns import config, run, initialization, models, quadrature; print('import OK')"
+
+      - name: Run test suite (CPU-only; GNDRM-comparison tests skip automatically)
+        run: pytest tests/ -v

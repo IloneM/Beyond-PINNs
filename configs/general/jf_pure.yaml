@@ -1,0 +1,13 @@
+# JF (discontinuous/jump forcing), PURE Petrov-Galerkin -- manuscript selection.
+part: general
+description: "JF pure Petrov-Galerkin, eigen_green_quadrature (manuscript selection)"
+
+benchmark: JF
+model_class: pure_petrov
+family: eigen_green_quadrature
+
+architecture: "2D MLP, tanh"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton)
+precision: float64
+quadrature: "eigen-Green section test family"
+evaluation: "independent error quadrature on a 20x16 reference triangulation"

@@ -1,0 +1,12 @@
+# Smooth linear 1D benchmark, ridge (TSVD-regularized) Gauss-Newton on the
+# weak residual -- our own method, GNDRM-free.
+part: smooth
+description: "Linear 1D, ridge Gauss-Newton (TSVD) on the weak residual formulation"
+
+problem: linear
+method: plain_gn_weak_tsvd
+
+architecture: "1D shallow MLP (tanh AND relu3, both run), width 64 (CONFIG.matched.width)"
+optimizer: "Ridge Gauss-Newton, truncated-SVD regularization (relative rcond, CONFIG.matched.plain_gn_tsvd_rcond)"
+precision: float64
+quadrature: "piecewise Gauss-Legendre, train_h=1/3000, test_h=1/4000"

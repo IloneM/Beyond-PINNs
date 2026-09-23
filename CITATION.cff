@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper (see preferred-citation below)."
+title: "Beyond PINNs: A Unified Gauss-Newton and Petrov-Galerkin Framework for Neural and Hybrid PDE Solvers"
+type: software
+authors:
+  - family-names: "Schwencke"
+    given-names: "Nilo"
+  - family-names: "Maier"
+    given-names: "Roland"
+# date-released left as the release date once actually published; update at
+# publication time rather than leaving a placeholder date that looks final.
+repository-code: "https://github.com/IloneM/Beyond-PINNs"
+version: "1.0.0"
+license: MIT
+# This software release itself does not have its own Zenodo DOI. The DOI
+# 10.5281/zenodo.22904196 is for the SEPARATE reference-results DATASET
+# (beyond-pinns-results), not for this software -- see the `dataset` entry
+# under `references` below, not a top-level `doi:` field here.
+references:
+  - type: dataset
+    title: "Beyond PINNs reference results archive"
+    authors:
+      - family-names: "Schwencke"
+        given-names: "Nilo"
+      - family-names: "Maier"
+        given-names: "Roland"
+    doi: "10.5281/zenodo.22904196"
+    url: "https://doi.org/10.5281/zenodo.22904196"
+    notes: "Reference-results dataset (v1.0), deposited on Zenodo."
+preferred-citation:
+  type: article
+  title: "Beyond PINNs: A Unified Gauss-Newton and Petrov-Galerkin Framework for Neural and Hybrid PDE Solvers"
+  authors:
+    - family-names: "Schwencke"
+      given-names: "Nilo"
+    - family-names: "Maier"
+      given-names: "Roland"
+  year: 2026
+  doi: "10.48550/arXiv.2609.20641"
+  url: "https://arxiv.org/abs/2609.20641"
+  identifiers:
+    - type: other
+      value: "arXiv:2609.20641"
+      description: "arXiv preprint identifier"

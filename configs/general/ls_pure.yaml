@@ -1,0 +1,16 @@
+# LS (distributional line source), PURE Petrov-Galerkin -- manuscript selection.
+# The line source is a TRUE distributional functional (Dirac measure on a
+# line), not a mollified/volumetric approximation -- preserved exactly in
+# src/beyond_pinns/legacy/part_b_general.py; see docs/EXPERIMENTS.md.
+part: general
+description: "LS pure Petrov-Galerkin, eigen_green_quadrature (manuscript selection)"
+
+benchmark: LS
+model_class: pure_petrov
+family: eigen_green_quadrature
+
+architecture: "2D MLP, tanh"
+optimizer: DSGNAR (sketched trust-region Gauss-Newton)
+precision: float64
+quadrature: "eigen-Green section test family"
+evaluation: "independent error quadrature, interface-fitted to the line source"
